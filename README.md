@@ -21,9 +21,18 @@ Ubuntu is a good option for beginners to Linux. |	RHEL is a good option for thos
 ![picture alt](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-5-Deployment_Guide-en-US/images/9b9fc97cbd107fd1c1942a292b92feec/lvg.png)
 ![picture alt](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-5-Deployment_Guide-en-US/images/60bf90643e32697025f671181b0f3de3/lvols.png) 
 ### 3. use lvm to format disk
-5. use lvm encryption on volume group
-6. install minimum server
-7. configure ssh
+    Create encrypted LVM_Group from installation GUI (use of strong password recomended)
+    Add necessary LV and mount points.
+    /boot
+    /
+    /home
+    /var
+    /tmp
+    /srv
+    /var/log
+4. install minimum server without GUI
+5. configure ssh
+    
     /etc/ssh/sshd_config
     Use port ####
     Permitrootlogin=no
