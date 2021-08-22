@@ -3,9 +3,9 @@ _42cursus / 42wolfsburg.de_
 
 ## Instalation: ##
 
-1. Install virtual box:
+### 1. Install virtual box:
     Go to https://www.virtualbox.org/ and folow instructions.
-3. Create new VM and install OS of your choice
+### 2. Create new VM and install OS of your choice
     *I have choosen Centos / RHEL*
     
 Ubuntu  |  Red Hat Linux/RHEL
@@ -17,7 +17,9 @@ Latest Ubuntu consists of the Gnome environment by default, though it allows you
 Ubuntu is for general use or server use. |	RHEL is generally business oriented or for commercial use.
 Ubuntu is a good option for beginners to Linux. |	RHEL is a good option for those who are intermediate in Linux and using it for commercial purposes.
 
-4. use lvm to format disk
+### LVM (Logical Volume Manager)
+![picture alt](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-5-Deployment_Guide-en-US/images/9b9fc97cbd107fd1c1942a292b92feec/lvg.png)
+### 3. use lvm to format disk
 5. use lvm encryption on volume group
 6. install minimum server
 7. configure ssh
