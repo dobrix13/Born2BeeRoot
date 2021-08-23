@@ -84,9 +84,10 @@ Check the status of UFW:
 
     sudo ufw status
 
-To disable UFW, you’ve to run this command:
+To alow port <your_port_#>
+    
+    ufw allow <your_port_#>
 
-    sudo ufw disable
 ### 9: customize password policy
 a ery straight forward way to setup pasword policy is to edit /etc/security/pwquality.conf file with CL text editor. sudo permissions are needed
     
