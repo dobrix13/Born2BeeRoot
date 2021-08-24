@@ -62,13 +62,14 @@ search for line
     #ListenAddress 0.0.0.0
     #ListenAddress ::
 
- Uncoment line port and cange 22 to <your_port_#>
+ Uncoment line port and change 22 to <your_port_#>
  ### 6: Deny ssh root acces
  
     Permitrootlogin=no
+    
 ### 7: configure selinux policy for ssh
 
-    semanage port -a -t http_port_t -p tcp <your_custom_port #>
+    semanage port -a -t ssh_port_t -p tcp <your_custom_port #>
 ### 8: configure firewall
 UFW isn’t available on the CentOS repository. We need to install the EPEL repository on our server.
 
