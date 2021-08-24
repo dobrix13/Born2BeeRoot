@@ -99,37 +99,112 @@ edit files in /etc/skel/ directory
 
 ### 11: Configuring sudo
 
-Configure sudo via sudo vi /etc/sudoers.d/<filename>. <filename> shall not end in ~ or contain ..
+Configure sudo via visudo /etc/sudoers.d/<filename>. <filename> shall not end in ~ or contain ..
 
-$ sudo vi /etc/sudoers.d/<filename>
+    $ visudo/etc/sudoers.d/<filename>
 
 To limit authentication using sudo to 3 attempts (defaults to 3 anyway) in the event of an incorrect password, add below line to the file.
 
-Defaults        passwd_tries=3
+    Defaults        passwd_tries=3
 
 To add a custom error message in the event of an incorrect password:
 
-Defaults        badpass_message="<custom-error-message>"
+    Defaults        badpass_message="<custom-error-message>"
 
 To log all sudo commands to /var/log/sudo/<filename>:
 
-$ sudo mkdir /var/log/sudo
-<~~~>
-Defaults        logfile="/var/log/sudo/<filename>"
-<~~~>
+    $ sudo mkdir /var/log/sudo
+    <~~~>
+    Defaults        logfile="/var/log/sudo/<filename>"
+    <~~~>
 
 To archive all sudo inputs & outputs to /var/log/sudo/:
 
-Defaults        log_input,log_output
-Defaults        iolog_dir="/var/log/sudo"
+    Defaults        log_input,log_output
+    Defaults        iolog_dir="/var/log/sudo"
 
 To require TTY:
 
-Defaults        requiretty
+    Defaults        requiretty
 
 To set sudo paths to /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:
 
-Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+    Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+### 12: User Management
+        
+Setting Up a Strong Password Policy,
+Configure password age policy /etc/login.defs.
+
+    $ sudo nano /etc/login.defs
+
+To set strong password policy , replace below lines
+
+    PASS_MAX_DAYS   30
+    PASS_MIN_DAYS   2
+    PASS_WARN_AGE   7
+
+Password Strength:
+
+    sudo nano /etc/security/pwquality.conf
+    minlen=10 – sets the minimum password length to 8 characters.
+    lcredit=-1 - Sets the minimum number of lower case letters that the password should contain to at least one
+    ucredit=-1 - Sets the minimum number of upper case letters on a password to at least one.
+    dcredit=-1 – Sets the minimum number of digits to be contained in a password to at least one
+    ocredit=-1 – Set the minimum number of other symbols such as @, #, ! $ % etc on a password to at least one
+    maxrepeat=3 - Only 3 retryes allowed
+
+To reject the password if it contains <username> in some form:
+
+    reject_username
+
+To set the number of changes required in the new password from the old password to 7:
+
+    difok=7
+
+To implement the same policy on root:
+
+    enforce_for_root
+        
+
+#### Creating a New User
+
+Create new user via sudo adduser <username>.
+
+    sudo adduser -G <groupnaame> <username>
+
+Verify whether user was successfully created via getent passwd <username>.
+
+    passwd <username>
+
+Verify newly-created user's password expiry information via sudo chage -l <username>.
+
+    sudo chage -l <username>
+    Last password change					: <last-password-change-date>
+    Password expires					: <last-password-change-date + PASS_MAX_DAYS>
+    Password inactive					: never
+    Account expires						: never
+    Minimum number of days between password change		: <PASS_MIN_DAYS>
+    Maximum number of days between password change		: <PASS_MAX_DAYS>
+    Number of days of warning before password expires	: <PASS_WARN_AGE>
+         
+#### Creating a New Group
+
+Create new user42 group via sudo addgroup user42.
+
+    sudo addgroup user42
+
+Add user to user42 group via sudo adduser <username> user42.
+
+    sudo adduser <username> user42
+
+Alternatively, add user to user42 group via sudo usermod -aG user42 <username>.
+
+    sudo usermod -aG user42 <username>
+
+Verify if user is asigned to the groop.
+     
+    sudo cat /etc/groups
 
 12. Install mariadb
 13. Install php
