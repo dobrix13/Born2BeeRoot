@@ -49,6 +49,8 @@ Add necessary LV and mount points.
 > /srv
 > 
 > /var/log
+>
+> /swap
   
 ### 4: install minimum server without GUI
 ### 5: configure ssh
