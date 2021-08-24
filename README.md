@@ -62,7 +62,7 @@ search for line
     #ListenAddress 0.0.0.0
     #ListenAddress ::
 
- Uncoment line port and change 22 to <your_port_#>
+ Uncomment line port and change 22 to <your_port_#>
  ### 6: Deny ssh root acces
  
     Permitrootlogin=no
@@ -92,7 +92,7 @@ To alow port <your_port_#>
     ufw allow <your_port_#>
 
 ### 9: customize password policy
-a ery straight forward way to setup pasword policy is to edit /etc/security/pwquality.conf file with CL text editor. sudo permissions are needed
+a very straight forward way to setup pasword policy is to edit /etc/security/pwquality.conf file with CL text editor. sudo permissions are needed
     
     /etc/security/pwquality.conf
     /etc/pam.d
@@ -141,7 +141,7 @@ Configure password age policy /etc/login.defs.
 
     $ sudo nano /etc/login.defs
 
-To set strong password policy , replace below lines
+To set strong password policy , edit below lines
 
     PASS_MAX_DAYS   30
     PASS_MIN_DAYS   2
@@ -176,9 +176,9 @@ Create new user via sudo adduser <username>.
 
     sudo adduser -G <groupnaame> <username>
 
-Verify whether user was successfully created via getent passwd <username>.
+Verify whether user was successfully created.
 
-    passwd <username>
+    sudo tail /etc/shadow | grep <username>
 
 Verify newly-created user's password expiry information via sudo chage -l <username>.
 
@@ -208,7 +208,11 @@ Alternatively, add user to user42 group via sudo usermod -aG user42 <username>.
 Verify if user is asigned to the groop.
      
     sudo cat /etc/groups
-
-12. Install mariadb
-13. Install php
-14. Install and configure wordpress
+### 13: Simple Monitoring script
+        
+    touch monitoring.sh
+    chmod 755 monitoring.sh
+        
+14. Install mariadb
+15. Install php
+16. Install and configure wordpress
