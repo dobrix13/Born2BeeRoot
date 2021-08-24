@@ -229,6 +229,8 @@ A Cron command first specifies (1) the interval at which you want to run the scr
 	|     +----------- hour (0 - 23)
 	+------------- min (0 - 59)
 - - - - 
+<h1>Bonus part</h1>
+	    
 - - - - 
 14. Install mariadb
 15. Install php
