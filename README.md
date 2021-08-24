@@ -212,6 +212,17 @@ Verify if user is asigned to the groop.
         
     touch monitoring.sh
     chmod 755 monitoring.sh
+
+### 14: Crontab.
+	    
+	*     *     *   *    *        command to be executed
+	-     -     -   -    -
+	|     |     |   |    |
+	|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+	|     |     |   +------- month (1 - 12)
+	|     |     +--------- day of        month (1 - 31)
+	|     +----------- hour (0 - 23)
+	+------------- min (0 - 59)
 - - - -
 #!/bin/bash
 arc=$(uname -a)
