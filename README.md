@@ -95,6 +95,13 @@ To alow port <your_port_#>
 a very straight forward way to setup pasword policy is to edit /etc/security/pwquality.conf file with CL text editor. sudo permissions are needed
     
     /etc/security/pwquality.conf
+Enforce root for password complexity
+Insert the following option in /etc/security/pwquality.conf:
+
+	enforce_for_root
+HINT:
+If this does not work then place enforce_for_root in /etc/pam.d/system-auth and /etc/pam.d/password-auth
+
     /etc/pam.d
     /etc/login.defs //password expiration dates
 ### 10: Banner: (just for fun!!!)
